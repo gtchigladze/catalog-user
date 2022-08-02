@@ -1,0 +1,37 @@
+
+
+<div *ngIf="vm$ | async as user">
+    <h2>{{ user.name }}</h2>
+
+    <table class="table table-striped">
+        <thead>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>email</td>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <td>phone</td>
+                <td>{{ user.phone }}</td>
+            </tr>
+            <tr>
+                <td>address</td>
+                <td>
+                    {{ user.address.street }}
+                    &nbsp;
+                    {{ user.address.suite }}
+                    &nbsp;
+                    {{ user.address.city }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>
+        <span class="btn btn-link px-0" (click)="togglePostsView()">view posts from {{ user.name }}</span>
+    </p>
+
+    <app-user-posts *ngIf="viewPosts" [userId]="user.id"></app-user-posts>
+</div>
